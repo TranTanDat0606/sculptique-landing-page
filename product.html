@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- GOOGLE FONTS -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Trirong:wght@400&family=Nunito:wght@400;500;600&family=Lato:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Trirong:wght@400&family=Nunito:wght@400;500;600;700&family=Lato:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -16,11 +16,10 @@
     <!-- Header -->
     <div data-include="header.html"></div>
 
-    <!-- Body Product-Detail -->
+    <!-- Container -->
     <div class="max-w-[1520px] mx-auto py-[32px]">
-      <!-- Container -->
+      <!-- Product -->
       <main class="container max-w-[1340px] mx-auto px-[50px]">
-        <!-- Product -->
         <section class="product max-w-[1240px] flex flex-row gap-[64px] items-start">
           <!-- Left Product -->
           <div data-include="./products/product-image.html"></div>
@@ -39,6 +38,8 @@
         <div id="logo-track" class="flex items-center gap-16 whitespace-nowrap"></div>
       </div>
     </section>
+
+    <div data-include="./sections/related-symptoms.html"></div>
   </body>
 
   <script defer src="./products.js"></script>
