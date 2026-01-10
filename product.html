@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sculptique</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- GOOGLE FONTS -->
     <link
@@ -16,21 +17,10 @@
     <!-- Header -->
     <div data-include="header.html"></div>
 
-    <!-- Container -->
-    <div class="max-w-[1520px] mx-auto py-[32px]">
-      <!-- Product -->
-      <main class="container max-w-[1340px] mx-auto px-[50px]">
-        <section class="product max-w-[1240px] flex flex-row gap-[64px] items-start">
-          <!-- Left Product -->
-          <div data-include="./products/product-image.html"></div>
+    <!-- Product -->
+    <div data-include="./products/product-container.html"></div>
 
-          <!-- Right Product -->
-          <div data-include="./products/product-info.html"></div>
-        </section>
-      </main>
-    </div>
-
-    <!-- As Seen In -->
+    <!-- Brand -->
     <section class="bg-[#f3eee0] py-[20px] overflow-hidden">
       <h3 class="text-center text-2xl font-['Trirong'] tracking-normal mb-6">As Seen In</h3>
 
@@ -39,6 +29,7 @@
       </div>
     </section>
 
+    <!-- Related Symptoms -->
     <div data-include="./sections/related-symptoms.html"></div>
   </body>
 
