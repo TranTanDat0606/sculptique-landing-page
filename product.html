@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sculptique</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- GOOGLE FONTS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Trirong:wght@400&family=Nunito:wght@400;500;600&family=Lato:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="font-['Nunito'] text-[16px] leading-[20.8px] font-normal tracking-[0.554px]">
+    <!-- Header -->
+    <div data-include="header.html"></div>
+
+    <!-- Body Product-Detail -->
+    <div class="max-w-[1520px] mx-auto py-[32px]">
+      <!-- Container -->
+      <main class="container max-w-[1340px] mx-auto px-[50px]">
+        <!-- Product -->
+        <section class="product max-w-[1240px] flex flex-row gap-[64px] items-start">
+          <!-- Left Product -->
+          <div data-include="./products/product-image.html"></div>
+
+          <!-- Right Product -->
+          <div data-include="./products/product-info.html"></div>
+        </section>
+      </main>
+    </div>
+
+    <!-- As Seen In -->
+    <section class="bg-[#f3eee0] py-[20px] overflow-hidden">
+      <h3 class="text-center text-2xl font-['Trirong'] tracking-normal mb-6">As Seen In</h3>
+
+      <div class="relative w-full overflow-hidden">
+        <div id="logo-track" class="flex items-center gap-16 whitespace-nowrap"></div>
+      </div>
+    </section>
+  </body>
+
+  <script defer src="./products.js"></script>
+</html>
