@@ -1,4 +1,4 @@
-import { logos, formulaData, questionData } from "./mocks/index.js";
+import { logos, formulaData, questionData, realStoriesData } from "./mocks/index.js";
 
 // HTML INCLUDE (SUPPORT NESTED)
 async function loadIncludes(root = document) {
@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   renderLogos();
   renderFormula();
   renderQuestion();
+  renderStories();
 });
 
 // ACCORDION (WATCH DETAILS)
@@ -187,4 +188,112 @@ function renderQuestion() {
     .join("");
 
   setupQuestionAccordion();
+}
+
+// Real Stories SETUP
+function setupStoriesAccordion() {
+  const items = document.querySelectorAll(".product_ugc-video");
+
+  items.forEach((item) => {
+    const video = item.querySelector("video");
+
+    item.addEventListener("click", () => {
+      const isPlay = item.classList.contains("is-play");
+
+      // Pause tất cả video khác (optional nhưng rất nên)
+      document.querySelectorAll(".product_ugc-video").forEach((el) => {
+        if (el !== item) {
+          el.classList.remove("is-play");
+          const v = el.querySelector("video");
+          v.pause();
+          v.currentTime = 0;
+        }
+      });
+
+      if (!isPlay) {
+        item.classList.add("is-play");
+        video.play();
+      } else {
+        item.classList.remove("is-play");
+        video.pause();
+      }
+    });
+  });
+}
+
+// Real Stories RENDERING
+function renderStories() {
+  const renderStories = document.getElementById("real_stories-content");
+
+  if (!renderStories) {
+    console.warn("render real stories not found yet");
+    return;
+  }
+
+  renderStories.innerHTML = realStoriesData
+    .map(
+      (item) => `
+    <div class="product_ugc-video p-2 rounded-lg w-full min-h-[523px] rounded-sm relative">
+      <img class="play-icon absolute top-[50%] left-[50%] w-[32px]" src="${item.playIcon}"/>
+      <video class="w-full min-h-[523px] rounded-sm object-cover" playsinline ">
+        <source src="${item.sourceVideo}" type="video/mp4" />
+      </video>
+    </div>
+  `
+    )
+    .join("");
+
+  setupStoriesAccordion();
+  initRealStoriesCarousel();
+}
+
+// Real Stories Actions Next/Prev
+function initRealStoriesCarousel() {
+  const items = Array.from(document.querySelectorAll(".product_ugc-video"));
+  const dots = Array.from(document.querySelectorAll(".slick-dots li"));
+  const prevBtn = document.getElementById("product_carousel-prev");
+  const nextBtn = document.getElementById("product_carousel-next");
+
+  const visibleCount = 4;
+  let currentIndex = 0;
+
+  function renderVisibleItems() {
+    items.forEach((item, index) => {
+      item.style.display = index >= currentIndex && index < currentIndex + visibleCount ? "block" : "none";
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("slick-active", i === currentIndex);
+    });
+  }
+
+  // DOT CLICK
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      currentIndex = index;
+
+      if (currentIndex > items.length - visibleCount) {
+        currentIndex = items.length - visibleCount;
+      }
+
+      renderVisibleItems();
+    });
+  });
+
+  // NEXT / PREV
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < items.length - visibleCount) {
+      currentIndex++;
+      renderVisibleItems();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      renderVisibleItems();
+    }
+  });
+
+  renderVisibleItems();
 }
