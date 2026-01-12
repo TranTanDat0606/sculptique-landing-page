@@ -1,6 +1,6 @@
-// ===============================
+import { logos, formulaData } from "./mocks/index.js";
+
 // HTML INCLUDE (SUPPORT NESTED)
-// ===============================
 async function loadIncludes(root = document) {
   const includeElements = root.querySelectorAll("[data-include]");
 
@@ -22,15 +22,26 @@ async function loadIncludes(root = document) {
 
       // 🔁 LOAD INCLUDE LỒNG NHAU
       await loadIncludes(el);
+
+      if (url.includes("formula.html")) {
+        renderFormula();
+      }
     } catch (err) {
       console.error("Include error:", url, err);
     }
   }
+
+  renderFormula();
 }
 
-// ===============================
+// DOM READY
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadIncludes();
+  renderLogos();
+  renderFormula();
+});
+
 // ACCORDION (WATCH DETAILS)
-// ===============================
 function toggleAccordion(index) {
   const accordion = document.getElementById(`accordion-${index}`);
   const content = document.getElementById(`content-${index}`);
@@ -56,41 +67,74 @@ function toggleAccordion(index) {
   }
 }
 
-// ===============================
 // AS SEEN IN - LOGO TRACK
-// ===============================
-const logos = [
-  "vogue.png",
-  "grazia-Logo.png",
-  "vogue.png",
-  "WH_Logo.png",
-  "vogue.png",
-  "grazia-Logo.png",
-  "vogue.png",
-  "WH_Logo.png",
-  "vogue.png",
-  "grazia-Logo.png",
-  "vogue.png",
-  "WH_Logo.png",
-  "vogue.png",
-  "grazia-Logo.png",
-  "vogue.png",
-  "WH_Logo.png",
-];
 
-const track = document.querySelector(".logo-track");
+function renderLogos() {
+  const track = document.querySelector(".logo-track");
 
-logos.concat(logos).forEach((src) => {
-  const img = document.createElement("img");
-  img.src = `./assets/image/${src}`;
-  img.alt = `brand-logo-${src}`;
-  track.appendChild(img);
-});
+  logos.concat(logos).forEach((src) => {
+    const img = document.createElement("img");
+    img.src = `./assets/image/${src}`;
+    img.alt = `brand-logo-${src}`;
+    track.appendChild(img);
+  });
+}
 
-// ===============================
-// DOM READY
-// ===============================
-document.addEventListener("DOMContentLoaded", async () => {
-  await loadIncludes();
-  renderLogos();
-});
+// FORMULA ACCORDION SETUP
+function setupFormulaAccordion() {
+  const items = document.querySelectorAll(".product-lymph-ingredient");
+
+  items.forEach((item) => {
+    item.addEventListener("click", () => {
+      const isOpen = item.classList.contains("is-open");
+
+      // nếu trước đó chưa mở → mở nó
+      if (!isOpen) {
+        item.classList.add("is-open");
+      } else {
+        item.classList.remove("is-open");
+      }
+    });
+  });
+}
+
+function renderFormula() {
+  const renderBox = document.getElementById("formula-render");
+
+  if (!renderBox) {
+    console.warn("formula-render not found yet");
+    return;
+  }
+
+  renderBox.innerHTML = formulaData
+    .map(
+      (item) => `
+    <div class="product-lymph-ingredient p-6 border-[1.5px] bg-white">
+
+      <p class="product_lymph-ingr-subtitle flex items-center justify-center gap-2">
+        <span>
+          <img  width="16" src="${item.subtitleIcon}" />
+        </span>
+        <span class="text-[#0c7c00]">${item.subtitle}</span>
+      </p>
+
+      <div class="product_lymph-ingr-thumb max-h-[120px] mx-auto my-3">
+        <img class="h-20 mx-auto" loading="lazy" src="${item.image}" />
+      </div>
+
+      <div class="product_lymph-ingr-more-info flex justify-between items-center">
+        <h5 class="font-semibold font-['Trirong']">${item.title}</h5>
+        <img class="max-w-6 arrow" src="${item.arrowIcon}" />
+      </div>
+
+      <div class="product_lymph-ingr-content pt-3 leading-[18.2px] text-sm">
+        <p>${item.description}</p>
+        <p>[Study: ${item.study}]</p>
+      </div>
+    </div>
+  `
+    )
+    .join("");
+
+  setupFormulaAccordion();
+}
