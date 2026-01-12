@@ -15,12 +15,256 @@
       </p>
     </div>
 
-    <div class="jdgm-rev-widg py-6 px-4">
+    <div class="jdgm-rev-widg pt-6 px-4">
       <div class="jdgm-rev-widg__header">
         <h2 class="jdgm-rev-widg__title font-['Trirong'] mb-6 text-2xl">Customer Reviews</h2>
 
-        <!-- ------------------------------------------- -->
-        <!-- ------------------------------------------- -->
+        <!-- Review Feed Back -->
+        <div class="max-w-5xl mx-auto bg-white pt-10">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-6">
+            <!-- LEFT: Average rating -->
+            <div class="text-center md:text-left">
+              <div class="flex justify-center md:justify-start items-center gap-1 mb-2">
+                <!-- stars -->
+                <span class="text-[#FA8A8A] text-2xl relative"
+                  >★★★★★
+                  <span class="h-[32px] w-2 bg-white absolute right-[2px]"></span>
+                </span>
+                <span class="ml-2 text-lg font-medium">4.67 out of 5</span>
+              </div>
+
+              <div class="text-sm text-gray-600 flex justify-center md:justify-start items-center gap-1">
+                Based on 110 reviews
+                <img
+                  class="w-4 h-4"
+                  src="https://judgeme-public-images.imgix.net/judgeme/logos/verified-checkmark.svg"
+                  alt=""
+                />
+              </div>
+            </div>
+
+            <!-- MIDDLE: Histogram -->
+            <div class="space-y-2">
+              <!-- 5 stars -->
+              <div class="flex items-center gap-3 text-sm">
+                <div class="w-20 text-[#FA8A8A]">★★★★★</div>
+                <div class="flex-1 h-3 bg-gray-100">
+                  <div class="h-3 bg-[#FA8A8A]" style="width: 76%"></div>
+                </div>
+                <div class="w-6 text-gray-500 text-right">84</div>
+              </div>
+
+              <!-- 4 stars -->
+              <div class="flex items-center gap-3 text-sm">
+                <div class="w-20 text-[#FA8A8A]">★★★★☆</div>
+                <div class="flex-1 h-3 bg-gray-100">
+                  <div class="h-3 bg-[#FA8A8A]" style="width: 15%"></div>
+                </div>
+                <div class="w-6 text-gray-500 text-right">17</div>
+              </div>
+
+              <!-- 3 stars -->
+              <div class="flex items-center gap-3 text-sm">
+                <div class="w-20 text-[#FA8A8A]">★★★☆☆</div>
+                <div class="flex-1 h-3 bg-gray-100">
+                  <div class="h-3 bg-[#FA8A8A]" style="width: 7%"></div>
+                </div>
+                <div class="w-6 text-gray-500 text-right">8</div>
+              </div>
+
+              <!-- 2 stars -->
+              <div class="flex items-center gap-3 text-sm">
+                <div class="w-20 text-[#FA8A8A]">★★☆☆☆</div>
+                <div class="flex-1 h-3 bg-gray-100">
+                  <div class="h-3 bg-[#FA8A8A]" style="width: 1%"></div>
+                </div>
+                <div class="w-6 text-gray-500 text-right">1</div>
+              </div>
+
+              <!-- 1 star -->
+              <div class="flex items-center gap-3 text-sm">
+                <div class="w-20 text-[#FA8A8A]">★☆☆☆☆</div>
+                <div class="flex-1 h-3 bg-gray-100">
+                  <div class="h-3 bg-[#FA8A8A]" style="width: 0%"></div>
+                </div>
+                <div class="w-6 text-gray-500 text-right">0</div>
+              </div>
+
+              <a href="#" class="text-sm text-[#FA8A8A] underline mt-2 inline-block"> See all reviews </a>
+            </div>
+
+            <!-- RIGHT: Button -->
+            <div class="flex justify-center md:justify-end">
+              <a
+                href="#"
+                class="min-w-[240px] bg-[#FA8A8A] hover:opacity-80 transition text-white font-black px-10 py-3"
+              >
+                Write a review
+              </a>
+            </div>
+          </div>
+
+          <div class="jdgm-row-media border-y border-[#fa8a8a1a]">
+            <div class="jdgm-medals-wrapper p-4" data-updated-at="2026-01-12T05:06:23Z">
+              <div class="jdgm-medals" data-link="https://app.judge.me/reviews/medals">
+                <div class="jdgm-medals__container py-4">
+                  <div
+                    class="jdgm-medal-wrapper"
+                    title="Diamond Authentic Shop. 100% of published reviews are verified reviews"
+                  >
+                    <a class="jdgm-medal" data-value="100.0" data-type="auth" data-tier="diamond">
+                      <div
+                        class="jdgm-medal__image"
+                        data-url="auth/diamond.svg"
+                        data-alt="Judge.me Diamond Authentic Shop medal"
+                      >
+                        <img
+                          class="w-20 mx-auto"
+                          alt="Judge.me Diamond Authentic Shop medal"
+                          src="https://judgeme-public-images.imgix.net/judgeme/medals-v2-2025-rebranding/auth/diamond.svg?auto=format"
+                        />
+                      </div>
+                      <div class="jdgm-medal__value text-[#4c8eda] font-black text-xs">100.0</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="max-w mx-auto bg-white">
+            <!-- Sort -->
+            <div class="flex justify-between items-center border-b border-[#FA8A8A]/30 py-4 mb-6">
+              <span class="text-[#FA8A8A] text-sm cursor-pointer"> Most Recent ▾ </span>
+            </div>
+
+            <!-- Review item -->
+            <div class="border-b border-[#FA8A8A]/20 pb-6 mb-6">
+              <div class="flex justify-between items-start">
+                <div>
+                  <!-- Stars -->
+                  <div class="text-[#FA8A8A] text-sm mb-2">★★★★★</div>
+
+                  <!-- Name -->
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-[#FA8A8A] font-medium">Anonymous</span>
+                    <span class="text-xs bg-[#FA8A8A] text-white px-2 py-[2px] rounded"> Verified </span>
+                  </div>
+                </div>
+
+                <!-- Date -->
+                <span class="text-xs text-[#000]/60">12/08/2025</span>
+              </div>
+
+              <!-- Content -->
+              <p class="text-[#000] text-sm leading-relaxed mt-2">
+                Pretty sure I’m seeing improvement in the smoothness of my skin after 30 days. Will continue with
+                confidence it’s working.
+              </p>
+            </div>
+
+            <!-- Review item -->
+            <div class="border-b border-[#FA8A8A]/20 pb-6 mb-6">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="text-[#FA8A8A] text-sm mb-2">★★★★★</div>
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-[#FA8A8A] font-medium">Anonymous</span>
+                    <span class="text-xs bg-[#FA8A8A] text-white px-2 py-[2px] rounded"> Verified </span>
+                  </div>
+                </div>
+                <span class="text-xs text-[#000]/60">12/01/2025</span>
+              </div>
+
+              <p class="text-[#000] text-sm leading-relaxed mt-2">One month and I’ve already seen a difference!</p>
+            </div>
+
+            <!-- Review item -->
+            <div class="border-b border-[#FA8A8A]/20 pb-6 mb-6">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="text-[#FA8A8A] text-sm mb-2">★★★★★</div>
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-[#FA8A8A] font-medium">Donabeth Houx</span>
+                    <span class="text-xs bg-[#FA8A8A] text-white px-2 py-[2px] rounded"> Verified </span>
+                  </div>
+                </div>
+                <span class="text-xs text-[#000]/60">11/23/2025</span>
+              </div>
+
+              <p class="text-[#000] text-sm leading-relaxed mt-2">
+                I LOVE THEM! My legs have gone from late stage 2 to late one!!! Oh my gosh! It’s a miracle!
+              </p>
+            </div>
+
+            <!-- Review item -->
+            <div class="border-b border-[#FA8A8A]/20 pb-6 mb-6">
+              <div class="flex justify-between items-start">
+                <div>
+                  <!-- Stars -->
+                  <div class="text-[#FA8A8A] text-sm mb-2">★★★★★</div>
+
+                  <!-- Name -->
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-[#FA8A8A] font-medium">Anonymous</span>
+                    <span class="text-xs bg-[#FA8A8A] text-white px-2 py-[2px] rounded"> Verified </span>
+                  </div>
+                </div>
+
+                <!-- Date -->
+                <span class="text-xs text-[#000]/60">12/08/2025</span>
+              </div>
+
+              <!-- Content -->
+              <p class="text-[#000] text-sm leading-relaxed mt-2">
+                Pretty sure I’m seeing improvement in the smoothness of my skin after 30 days. Will continue with
+                confidence it’s working.
+              </p>
+            </div>
+
+            <!-- Review item -->
+            <div class="border-b border-[#FA8A8A]/20 pb-6 mb-6">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="text-[#FA8A8A] text-sm mb-2">★★★★★</div>
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-[#FA8A8A] font-medium">Anonymous</span>
+                    <span class="text-xs bg-[#FA8A8A] text-white px-2 py-[2px] rounded"> Verified </span>
+                  </div>
+                </div>
+                <span class="text-xs text-[#000]/60">12/01/2025</span>
+              </div>
+
+              <p class="text-[#000] text-sm leading-relaxed mt-2">One month and I’ve already seen a difference!</p>
+            </div>
+
+            <!-- Review item -->
+            <div class="border-b border-[#FA8A8A]/20 pb-6 mb-6">
+              <div class="flex justify-between items-start">
+                <div>
+                  <div class="text-[#FA8A8A] text-sm mb-2">★★★★★</div>
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-[#FA8A8A] font-medium">Donabeth Houx</span>
+                    <span class="text-xs bg-[#FA8A8A] text-white px-2 py-[2px] rounded"> Verified </span>
+                  </div>
+                </div>
+                <span class="text-xs text-[#000]/60">11/23/2025</span>
+              </div>
+
+              <p class="text-[#000] text-sm leading-relaxed mt-2">
+                I LOVE THEM! My legs have gone from late stage 2 to late one!!! Oh my gosh! It’s a miracle!
+              </p>
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center items-center gap-4 text-sm">
+              <span class="text-gray-500 font-semibold cursor-pointer">1</span>
+              <span class="text-[#FA8A8A] font-semibold cursor-pointer">2</span>
+              <span class="text-[#FA8A8A] font-semibold cursor-pointer">3</span>
+              <span class="text-[#FA8A8A] font-semibold cursor-pointer">›</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
