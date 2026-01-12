@@ -42,3 +42,27 @@
 .product-lymph-ingredient.is-open img.arrow {
   transform: rotate(180deg);
 }
+
+/* Question Content */
+.product_faq-item {
+  overflow: hidden;
+}
+
+.product_fag-desc {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.8s ease;
+}
+
+.product_faq-item.is-open .product_fag-desc {
+  max-height: 500px;
+  transition: max-height 1.5s ease;
+}
+
+.product_faq-item img.arrow {
+  transition: transform 0.5s ease;
+}
+
+.product_faq-item.is-open img.arrow {
+  transform: rotate(180deg);
+}
