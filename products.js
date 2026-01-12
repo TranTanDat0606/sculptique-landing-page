@@ -37,14 +37,42 @@ async function loadIncludes(root = document) {
 // DOM READY
 document.addEventListener("DOMContentLoaded", async () => {
   await loadIncludes();
+  activeInput(0);
   renderLogos();
   renderFormula();
   renderQuestion();
   renderStories();
 });
 
+window.closeBox = function () {
+  const box = document.getElementById("promoBox");
+  box.classList.remove("w-[500px]");
+  box.classList.add("w-0", "opacity-0");
+};
+
+window.activeInput = function (index) {
+  const activeOption = document.getElementById(`option-buy-${index}`);
+  const allOptions = document.querySelectorAll('[id^="option-buy-"]');
+
+  allOptions.forEach((option) => {
+    const deals = option.querySelectorAll(".option-deal");
+    const radio = option.querySelector('input[type="radio"]');
+
+    const isActive = option === activeOption;
+
+    // radio
+    radio.checked = isActive;
+
+    // tất cả deal trong option
+    deals.forEach((deal) => {
+      deal.classList.toggle("opacity-100", isActive);
+      deal.classList.toggle("opacity-60", !isActive);
+    });
+  });
+};
+
 // ACCORDION (WATCH DETAILS)
-function toggleAccordion(index) {
+window.toggleAccordion = function (index) {
   const accordion = document.getElementById(`accordion-${index}`);
   const content = document.getElementById(`content-${index}`);
   const icon = document.getElementById(`icon-${index}`);
@@ -67,7 +95,7 @@ function toggleAccordion(index) {
   if (img) {
     img.style.transform = content.classList.contains("hidden") ? "rotate(0deg)" : "rotate(45deg)";
   }
-}
+};
 
 // LOGO TRACK RENDERING
 function renderLogos() {
@@ -122,13 +150,15 @@ function renderFormula() {
         <span class="text-[#0c7c00]">${item.subtitle}</span>
       </p>
 
-      <div class="product_lymph-ingr-thumb max-h-[120px] mx-auto my-3">
-        <img class="h-20 mx-auto" loading="lazy" src="${item.image}" />
-      </div>
+      <div class="flex items-center gap-2 min-[680px]:flex-col flex-row">
+        <div class="product_lymph-ingr-thumb w-[108px] min-[680px]:w-full max-h-[120px] mx-0 min-[680px]:mx-auto my-3">
+          <img class="h-20 mx-auto" loading="lazy" src="${item.image}" />
+        </div>
 
-      <div class="product_lymph-ingr-more-info flex justify-between items-center">
-        <h5 class="font-semibold font-['Trirong']">${item.title}</h5>
-        <img class="max-w-6 arrow" src="${item.arrowIcon}" />
+        <div class="product_lymph-ingr-more-info w-full flex justify-between items-center">
+          <h5 class="font-semibold font-['Trirong']">${item.title}</h5>
+          <img class="max-w-6 arrow" src="${item.arrowIcon}" />
+        </div>
       </div>
 
       <div class="product_lymph-ingr-content pt-3 leading-[18.2px] text-sm">
