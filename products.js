@@ -67,17 +67,18 @@ function toggleAccordion(index) {
   }
 }
 
-// AS SEEN IN - LOGO TRACK
-
+// LOGO TRACK RENDERING
 function renderLogos() {
   const track = document.querySelector(".logo-track");
 
-  logos.concat(logos).forEach((src) => {
-    const img = document.createElement("img");
-    img.src = `./assets/image/${src}`;
-    img.alt = `brand-logo-${src}`;
-    track.appendChild(img);
-  });
+  Array.from({ length: 30 })
+    .flatMap(() => logos)
+    .forEach((src) => {
+      const img = document.createElement("img");
+      img.src = `./assets/image/${src}`;
+      img.alt = `brand-logo-${src}`;
+      track.appendChild(img);
+    });
 }
 
 // FORMULA ACCORDION SETUP
@@ -98,6 +99,7 @@ function setupFormulaAccordion() {
   });
 }
 
+// FORMULA RENDERING
 function renderFormula() {
   const renderBox = document.getElementById("formula-render");
 

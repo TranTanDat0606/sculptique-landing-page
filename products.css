@@ -5,7 +5,7 @@
 .logo-track {
   display: flex;
   width: max-content;
-  animation: scroll 80s linear infinite;
+  animation: scroll 400s linear infinite;
 }
 
 .logo-track img {
