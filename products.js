@@ -32,43 +32,60 @@ async function loadIncludes(root = document) {
 // ACCORDION (WATCH DETAILS)
 // ===============================
 function toggleAccordion(index) {
+  const accordion = document.getElementById(`accordion-${index}`);
   const content = document.getElementById(`content-${index}`);
   const icon = document.getElementById(`icon-${index}`);
 
   if (!content || !icon) return;
 
+  if (accordion.classList.contains("border-gray-300")) {
+    // đang gray → đổi sang green
+    accordion.classList.remove("border-gray-300");
+    accordion.classList.add("border-green-600");
+  } else {
+    // đang green → đổi sang gray
+    accordion.classList.remove("border-green-600");
+    accordion.classList.add("border-gray-300");
+  }
+
   content.classList.toggle("hidden");
-  icon.textContent = content.classList.contains("hidden") ? "+" : "×";
+
+  const img = icon.querySelector("img");
+  if (img) {
+    img.style.transform = content.classList.contains("hidden") ? "rotate(0deg)" : "rotate(45deg)";
+  }
 }
 
 // ===============================
 // AS SEEN IN - LOGO TRACK
 // ===============================
 const logos = [
-  { name: "VOGUE" },
-  { name: "GRAZIA" },
-  { name: "VOGUE" },
-  { name: "Women's Health" },
-  { name: "VOGUE" },
-  { name: "GRAZIA" },
+  "vogue.png",
+  "grazia-Logo.png",
+  "vogue.png",
+  "WH_Logo.png",
+  "vogue.png",
+  "grazia-Logo.png",
+  "vogue.png",
+  "WH_Logo.png",
+  "vogue.png",
+  "grazia-Logo.png",
+  "vogue.png",
+  "WH_Logo.png",
+  "vogue.png",
+  "grazia-Logo.png",
+  "vogue.png",
+  "WH_Logo.png",
 ];
 
-function renderLogos() {
-  const track = document.getElementById("logo-track");
-  if (!track) return;
+const track = document.querySelector(".logo-track");
 
-  const items = [...logos, ...logos]; // duplicate for infinite feel
-
-  track.innerHTML = items
-    .map(
-      (logo) => `
-        <span class="text-xl font-semibold tracking-wide opacity-70">
-          ${logo.name}
-        </span>
-      `
-    )
-    .join("");
-}
+logos.concat(logos).forEach((src) => {
+  const img = document.createElement("img");
+  img.src = `./assets/image/${src}`;
+  img.alt = `brand-logo-${src}`;
+  track.appendChild(img);
+});
 
 // ===============================
 // DOM READY

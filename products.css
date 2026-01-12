@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+.logo-marquee {
+  overflow: hidden;
+}
+
+.logo-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 80s linear infinite;
+}
+
+.logo-track img {
+  padding: 0 50px;
+  height: 30px;
+  object-fit: cover;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
