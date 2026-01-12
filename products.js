@@ -1,4 +1,4 @@
-import { logos, formulaData } from "./mocks/index.js";
+import { logos, formulaData, questionData } from "./mocks/index.js";
 
 // HTML INCLUDE (SUPPORT NESTED)
 async function loadIncludes(root = document) {
@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await loadIncludes();
   renderLogos();
   renderFormula();
+  renderQuestion();
 });
 
 // ACCORDION (WATCH DETAILS)
@@ -139,4 +140,51 @@ function renderFormula() {
     .join("");
 
   setupFormulaAccordion();
+}
+
+// QUESTION ACCORDION SETUP
+function setupQuestionAccordion() {
+  const items = document.querySelectorAll(".product_faq-item");
+
+  items.forEach((item) => {
+    item.addEventListener("click", () => {
+      const isOpen = item.classList.contains("is-open");
+
+      // nếu trước đó chưa mở → mở nó
+      if (!isOpen) {
+        item.classList.add("is-open");
+      } else {
+        item.classList.remove("is-open");
+      }
+    });
+  });
+}
+
+// QUESTION RENDERING
+function renderQuestion() {
+  const renderQuestion = document.getElementById("product_faq_container");
+
+  if (!renderQuestion) {
+    console.warn("render-Question not found yet");
+    return;
+  }
+
+  renderQuestion.innerHTML = questionData
+    .map(
+      (item) => `
+      <div class="product_faq-item px-6 py-5 border-b border-[white]">
+        <div class="product_faq-question flex items-center justify-between">
+          <div class="product_faq_item text-lg/[23.4px]">${item.question}</div>
+          <img class="max-w-6 arrow" src="${item.arrowIcon}" />
+        </div>
+        <div class="product_fag-desc">
+          <p class="pt-4">${item.answer}</p>
+           ${item.subAnswer ? `<p class="mt-3">${item.subAnswer}</p>` : ""}
+        </div>
+      </div>
+  `
+    )
+    .join("");
+
+  setupQuestionAccordion();
 }
